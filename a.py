@@ -2,20 +2,23 @@ import tkinter as tk
 import os
 from tkinter import messagebox
 
+
 def button_click():
     input_value=input_box.get()
     output.insert(tk.END,input_value)
     #messagebox.showinfo('クリックイベント',input_value + 'が入力されました。')
+
 def button_console():
-    input_v=input_box.get()
+    input_v = input_box.get()
     print(input_v)
     os.system('say '+ input_v)
+    
 def end_select():
     select=messagebox.askquestion('','本当に終了しますか？')
     if select=='yes':
         root.quit()
 
-#window
+# window
 root = tk.Tk()
 root.title('Python GUI')
 root.geometry('720x640')
@@ -39,4 +42,5 @@ button=tk.Button(text='sayコマンドボタン',command=button_console)
 button.place(x=10,y=200)
 button=tk.Button(text='終了ボタン',command=end_select)
 button.place(x=10,y=0)
+
 root.mainloop()
