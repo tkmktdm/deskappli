@@ -35,6 +35,7 @@ def button_delete():
 root = tk.Tk()
 root.title('Python GUI')
 root.geometry('720x640')
+#root['bg'] = 'blue'
 
 # input box
 input_box = tk.Entry(width=40)
@@ -54,10 +55,10 @@ button.place(x=10, y=150)
 button = tk.Button(text = 'sayコマンドボタン', command = button_console)
 button.place(x=10, y=200)
 button = tk.Button(text = '終了ボタン', command = end_select)
-button.place(x=10, y=0)
+button.place(x=10, y=10)
 button = tk.Button(text = 'コマンド操作', command = button_command)
 button.place(x=10, y=250)
 button = tk.Button(text = '削除', command = button_delete)
-button.place(x=50, y=150)
+button.place(x=110, y=150)
 
 root.mainloop()
