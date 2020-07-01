@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 from tkinter import messagebox
-
+from img import Logo
 #input
 def button_click():
     input_value = input_box.get()
@@ -33,7 +33,11 @@ def button_delete():
 
 # window
 root = tk.Tk()
-root.title('Python GUI')
+root.title('DeskAppli')
+#icon表示させられたらする
+#data = Logo.title_logo()
+#img = tk.PhotoImage(data=data)
+#root.tk.call('vm', 'iconphoto', root._w, tk.PhotoImage(data=data))
 root.geometry('720x640')
 #root['bg'] = 'blue'
 
