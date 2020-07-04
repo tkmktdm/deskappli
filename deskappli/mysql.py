@@ -22,7 +22,7 @@ class connect:
         cur = cnct.cursor()
         return cnct,cur,table,status
 
-    def insert(self, incur):
+    def insert(self, un, um, up, incur):
         cnct = incur
         cur = cnct.cursor()
         table = "testTable"
@@ -38,9 +38,9 @@ class connect:
         #testdata = ("b", "b@mail.com", "test", now(), now())
         #データの追加
         judge_user = 0
-        usern = 'b'
-        userm = 'b@mail.com'
-        userp = 'test'
+        usern = un
+        userm = um
+        userp = up
         #insert="INSERT INTO " + table + " " + status + " VALUES ('b', 'b@mail.com', 'test', now(), now());"
         for i in users:
             if i == usern:
@@ -51,11 +51,11 @@ class connect:
             #insert="INSERT INTO " + table + " " + status + " VALUES " + testdata + ";"
             cur.execute(insert)
             cnct.commit()
-            print('new insert_database')
+            rtn = 'new insert_database'
         else:
-            print('exist')
+            rtn = 'exist'
         
-        return 'ok'
+        return rtn
 
 '''
 #---------
