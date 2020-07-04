@@ -2,6 +2,7 @@ import tkinter as tk
 import os
 from tkinter import messagebox
 from img import Logo
+from mysql import connect
 #input
 def button_click():
     input_value = input_box.get()
@@ -30,6 +31,13 @@ def button_command():
 #delete
 def button_delete():
     output.delete(0)
+
+#sql
+def button_sql():
+    sql = connect()
+    cnct,cur,table,status = sql.setting()
+    req = sql.insert(cnct)
+    output.insert(tk.END, req)
 
 # window
 root = tk.Tk()
@@ -64,5 +72,9 @@ button = tk.Button(text = 'コマンド操作', command = button_command)
 button.place(x=10, y=250)
 button = tk.Button(text = '削除', command = button_delete)
 button.place(x=110, y=150)
+
+button = tk.Button(text = 'sql', command = button_sql)
+button.place(x=11, y=350)
+
 
 root.mainloop()
