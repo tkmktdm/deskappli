@@ -2,6 +2,7 @@ import tkinter as tk
 import os
 from tkinter import messagebox
 from img import Logo
+from mysql import connect
 #input
 def button_click():
     input_value = input_box.get()
@@ -31,6 +32,17 @@ def button_command():
 def button_delete():
     output.delete(0)
 
+#sql
+def button_sql():
+    name = name_box.get()
+    mail = mail_box.get()
+    pw = pass_box.get()
+
+    sql = connect()
+    cnct,cur,table,status = sql.setting()
+    req = sql.insert(name, mail, pw, cnct)
+    output.insert(tk.END, req)
+
 # window
 root = tk.Tk()
 root.title('DeskAppli')
@@ -42,27 +54,43 @@ root.geometry('720x640')
 #root['bg'] = 'blue'
 
 # input box
-input_box = tk.Entry(width=40)
-input_box.place(x=100, y=100)
+#input_box = tk.Entry(width=40)
+#input_box.place(x=100, y=100)
+name_box = tk.Entry(width=40)
+name_box.place(x=100, y=150)
+mail_box = tk.Entry(width=40)
+mail_box.place(x=100, y=200)
+pass_box = tk.Entry(width=40)
+pass_box.place(x=100, y=250)
 
 # label
 input_box_label = tk.Label(text='box')
 input_box_label.place(x=25, y=100)
+name_label = tk.Label(text='name')
+name_label.place(x=25, y=150)
+mail_label = tk.Label(text='mail')
+mail_label.place(x=25, y=200)
+pass_label = tk.Label(text='pass')
+pass_label.place(x=25, y=250)
 
 # output
 output = tk.Listbox(width=55, height=15)
-output.place(x=100, y=300)
+output.place(x=100, y=350)
 
 # button
-button = tk.Button(text = '実行ボタン', command = button_click)
-button.place(x=10, y=150)
-button = tk.Button(text = 'sayコマンドボタン', command = button_console)
-button.place(x=10, y=200)
+#button = tk.Button(text = '実行ボタン', command = button_click)
+#button.place(x=10, y=300)
+#button = tk.Button(text = 'sayコマンドボタン', command = button_console)
+#button.place(x=175, y=300)
 button = tk.Button(text = '終了ボタン', command = end_select)
-button.place(x=10, y=10)
-button = tk.Button(text = 'コマンド操作', command = button_command)
-button.place(x=10, y=250)
-button = tk.Button(text = '削除', command = button_delete)
-button.place(x=110, y=150)
+button.place(x=10, y=30)
+#button = tk.Button(text = 'コマンド操作', command = button_command)
+#button.place(x=320, y=300)
+#button = tk.Button(text = '削除', command = button_delete)
+#button.place(x=110, y=300)
+
+button = tk.Button(text = 'sql', command = button_sql)
+button.place(x=11, y=350)
+
 
 root.mainloop()
