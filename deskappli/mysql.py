@@ -46,12 +46,14 @@ class connect:
             if i == usern:
                 judge_user = 1
 
-        if judge_user != 1:
+        if judge_user != 1 and usern != '' and userm != '' and userp != '':
             insert="INSERT INTO " + table + " " + status + " VALUES ('" + usern + "', '" + userm + "', '" + userp + "', now(), now());"
             #insert="INSERT INTO " + table + " " + status + " VALUES " + testdata + ";"
             cur.execute(insert)
             cnct.commit()
             rtn = 'new insert_database'
+        elif usern == '' or userm == '' or userp == '':
+            rtn = 'null object error'
         else:
             rtn = 'exist'
         
