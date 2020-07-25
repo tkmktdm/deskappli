@@ -3,6 +3,27 @@ import os
 from tkinter import messagebox
 from img import Logo
 from mysql import connect
+
+import tkinter.ttk as ttk
+
+class NotebookSample(ttk.Frame):
+    def __init__(self, root):
+        super().__init__(root)
+        self.create_widgets()
+        self.pack()
+
+    def create_widgets(self):
+        note = ttk.Notebook(self)
+        note.pack()
+        note0 = ttk.Frame(note,width=720,height=640)
+        note1 = ttk.Frame(note,width=720,height=640)
+        note.add(note0,text="create")
+        note.add(note1,text="show")
+        #note.add(note0,)
+
+
+
+
 #input
 def button_click():
     input_value = input_box.get()
@@ -92,5 +113,5 @@ button.place(x=10, y=30)
 button = tk.Button(text = 'sql', command = button_sql)
 button.place(x=11, y=350)
 
-
+NotebookSample(root)
 root.mainloop()
